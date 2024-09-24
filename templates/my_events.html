@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Events</title>
+</head>
+<body>
+    <h1>My Events</h1>
+    <ul>
+    {% for event in events %}
+        <li>{{ event.name }} on {{ event.event_date }}</li>
+    {% endfor %}
+    </ul>
+    <a href="{{ url_for('create_event') }}">Create New Event</a>
+</body>
+</html>
+<a href="{{ url_for('logout') }}">Logout</a>

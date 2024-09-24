@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Events</title>
+</head>
+<body>
+    <h1>Search Events</h1>
+    <form method="POST" action="{{ url_for('search') }}">
+        <input type="text" name="query" placeholder="Search...">
+        <select name="filter_type">
+            <option value="name">Name</option>
+            <option value="location">Location</option>
+            <option value="type">Type</option>
+        </select>
+        <button type="submit">Search</button>
+    </form>
+
+    <ul>
+    {% for event in events %}
+        <li>{{ event.name }} on {{ event.event_date }} at {{ event.location }}</li>
+    {% endfor %}
+    </ul>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Details</title>
+</head>
+<body>
+    <h1>{{ event.name }}</h1>
+    <p>{{ event.description }}</p>
+    <p>Date: {{ event.event_date }}</p>
+    <p>Time: {{ event.event_time }}</p>
+    <p>Location: {{ event.location }}</p>
+    <p>Type: {{ event.type }}</p>
+
+    <h2>Participants</h2>
+    <ul>
+    {% for participation in participations %}
+        <li>{{ participation.user }} - {{ participation.status }}</li>
+    {% endfor %}
+    </ul>
+
+    <form method="POST" action="{{ url_for('participate_event', event_id=event._id) }}">
+        <select name="status">
+            <option value="coming">Coming</option>
+            <option value="maybe">Maybe</option>
+        </select>
+        <button type="submit">Participate</button>
+    </form>
+</body>
+</html>
